@@ -1,0 +1,33 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <title>web-socketioTest</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+        <!-- Angular-Material -->
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+
+
+        <link href="bower_components/cssMaterialColors/colors.css" rel="stylesheet">
+
+        <!-- own styles -->
+        <link rel="stylesheet" href="css/chat.css">
+  </head>
+  <body>
+
+      <span ng-view></span>
+
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-socket-io/socket.js"></script>
+
+    <!-- angular-material -->
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+
+    <script src="app.js"></script>
+    <script src="views/playground/playground.js"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+a
+<ul id="messages">
+    <li ng-repeat="msg in msgs track by $index">
+        {{msg}}
+    </li>
+</ul>
+<form>
+  <input id="m" ng-model="msg.text" /><button ng-click="send()">Send</button>
+</form>

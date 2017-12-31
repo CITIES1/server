@@ -1,0 +1,41 @@
+<md-content>
+    <div layout="row">
+        <md-card flex>
+            User: {{user.id}}
+            Life: {{user.current_life}}/{{user.max_life}}
+            <md-progress-linear md-mode="determinate" value="{{user.current_life}}"></md-progress-linear>
+        </md-card>
+        <md-card flex>
+            <div ng-repeat="user in users">
+                User: {{user.id}}
+                Life: {{user.current_life}}/{{user.max_life}}
+                <md-progress-linear md-mode="determinate" value="{{user.current_life}}"></md-progress-linear>
+                <md-button class="md-raised" ng-click="attack(user.id)">Attack</md-button>
+            </div>
+        </md-card>
+    </div>
+</md-content>
+
+<md-toolbar layout="row" class="o_bBlueDark">
+    <div class="md-toolbar-tools">
+        <span>chat - to test user actions</span>
+    </div>
+</md-toolbar>
+<md-content class="md-padding chat_backgroundImg">
+    <md-list flex>
+        <md-list-item ng-repeat="msg in msgs" ng-click="null">
+            <p>{{msg.text}}</p>
+            <div class="md-secondary">{{msg.date | date:"HH:mm"}}h</div>
+        </md-list-item>
+    </md-list>
+</md-content>
+
+<md-toolbar layout="row" class="o_grey300" style="bottom:0; position:fixed;">
+    <div class="md-toolbar-tools">
+        <md-input-container md-no-float class="md-block" flex>
+            <input ng-model="msg.text" placeholder="Write a message..."
+            ng-keyup="$event.keyCode == 13 ? send() : null">
+          </md-input-container>
+          <md-button class="md-raised" ng-click="send()">Send</md-button>
+    </div>
+</md-toolbar>
