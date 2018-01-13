@@ -8,7 +8,7 @@ angular.module('app', [
     ])
     .factory('socket', function(socketFactory) {
         return socketFactory({
-            ioSocket: io.connect('localhost:3000')
+            ioSocket: io.connect('192.168.1.34:4444')
         });
         //return socketFactory();
     })

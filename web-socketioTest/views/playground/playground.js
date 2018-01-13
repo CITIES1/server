@@ -43,7 +43,7 @@ angular.module('app.playground', [
           to: id,
           damage: 5
       };
-      socket.emit("attack", attack, function(data){
+      socket.emit("attack", JSON.stringify(attack), function(data){
 
       });
   };

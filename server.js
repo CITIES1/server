@@ -25,7 +25,8 @@ io.on('connection', function(socket){
   var newuser = {
       id: uuid.v1(),
       current_life: 100,
-      max_life: 100
+      max_life: 100,
+      character: ""
   };
   users.push(JSON.parse(JSON.stringify(newuser)));
   console.log(users);
@@ -38,8 +39,20 @@ io.on('connection', function(socket){
 		io.sockets.emit('newmsg', data); //aqí envia la data
 	});
 
+    socket.on('character', function (data, callback){
+        /*
+            data: {
+                character: "modelid",
+                id: "userid"
+            }
+        */
+        updateCharacter(data);
+  		io.sockets.emit('users_update', users); //aqí envia la data
+  	});
 
-  socket.on('attack', function (data, callback){
+
+  socket.on('attack', function (d, callback){
+        data = JSON.parse(d);
 		console.log("attack");
         console.log(data);
         attackUser(data);
@@ -48,12 +61,22 @@ io.on('connection', function(socket){
 });
 
 function attackUser(attack) {
+    console.log("attack.to:");
+    console.log(attack.to);
     for(var i=0; i<users.length; i++) {
         if(users[i].id == attack.to) {
             users[i].current_life = users[i].current_life - attack.damage;
         }
     }
 }
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+
+function updateCharacter(characterUpdate) {
+    for(var i=0; i<users.length; i++) {
+        if(users[i].id == characterUpdate.id) {
+            users[i].character = characterUpdate.character;
+        }
+    }
+}
+http.listen(4444, function(){
+  console.log('listening on *:4444');
 });
