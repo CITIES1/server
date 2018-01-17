@@ -61,8 +61,6 @@ io.on('connection', function(socket){
 });
 
 function attackUser(attack) {
-    console.log("attack.to:");
-    console.log(attack.to);
     for(var i=0; i<users.length; i++) {
         if(users[i].id == attack.to) {
             users[i].current_life = users[i].current_life - attack.damage;

@@ -41,7 +41,7 @@ angular.module('app.playground', [
       var attack = {
           from: $scope.user.id,
           to: id,
-          damage: 5
+          damage: 1
       };
       socket.emit("attack", JSON.stringify(attack), function(data){
 
